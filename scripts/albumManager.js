@@ -1,7 +1,6 @@
 class AlbumManager {
   
   constructor() {
-    console.log("In AlbumManager Constructor");
     this.albums = [];
     this.currentIndex = 0;
   }

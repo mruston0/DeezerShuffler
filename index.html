@@ -10,7 +10,6 @@
   </head>
   <body>
     <header>
-      <!--<h1 align="center">Deezer Favourite Shuffler</h1>-->
       Deezer Favourite Shuffler
     </header>
 
@@ -25,8 +24,9 @@
         <h3>{{artist}} - {{album}}</h3>
           <div class="albumArtWrapper">
             <img v-bind:src="albumArt" id="albumArt">
-              <a href="#" onclick="PausePlayer()">
-                <span id="PlayPauseHoverIcon" class="glyphicon glyphicon-pause"></span>
+              <a href="#" @click="togglePlay">
+                <span id="PlayPauseHoverIcon"
+                      v-bind:class="classObject"></span>
               </a>
             </img>
           </div>          
@@ -34,7 +34,7 @@
         <div>          
           <table class="trackListing">
             <tbody>
-              <tr v-for="(track, index) in tracks" class="trackListingRow" v-bind:data-track="index">
+              <tr v-for="(track, index) in tracks" class="trackListingRow" v-bind:data-track="index" @click="trackClicked">
                 <!-- Bind the row with an ID of the track ID number, that way we can reference it -->
                 <td class="pull-left">{{index +1}}. {{track.title}}</td>
                 <td class="pull-right">{{getTrackTimeString(track.duration)}}</td></tr>
@@ -44,16 +44,12 @@
       </div>
       <div id="dz-root" hidden></div>
     </main>
-
-    <!-- Your web-app is https, so your scripts need to be too -->
     <script src="https://e-cdns-files.dzcdn.net/js/min/dz.js"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script> 
     <script src="scripts/vue.js"></script>
     <script src="scripts/albumPlayer.js"></script>
     <script src="scripts/albumManager.js"></script>
     <script src="scripts/client.js"></script>
-    
-   
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
 </html>

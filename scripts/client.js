@@ -4,23 +4,9 @@
 let albumManager = new AlbumManager();
 let currentPage = 0;
 let isLoggedInProbably = false;
-let playerIsPaused = false;
 let isPlayerInit = false;
 
 $(function() {
-  console.log('Initializing...');
-  
-    // DZ.init({
-		//     appId  : '225304',
-		//     channelUrl : 'http://lvh.me:81',
-		//     player: {
-    // 			container: 'player',
-    // 			width : 500,
-    // 			height : 500,
-    // 			format : 'classic',
-    // 			playlist : true//,
-		//     }
-	  //   });
 
     DZ.init({
 		    appId  : '225304',
@@ -40,7 +26,7 @@ $(function() {
 
      // Callback function is called when the currently playing track has changed
     DZ.Event.subscribe('current_track', function(track, evt_name){
-	      console.log("Currently playing track", track);
+	      //console.log("Currently playing track", track);
         albumPlayer.setActiveTrack(track.index);
     });
 });
@@ -123,6 +109,7 @@ function GetFavouriteAlbums(response) {
     DZ.api(url, GetFavouriteAlbums);
   }
   else {
+    DZ.player.setVolume(100);
     PlayRandomAlbum();
   }
 }
@@ -135,20 +122,20 @@ function addToArray(albums) {
     }
 }
 
+/*
 function PausePlayer() {
-  if (playerIsPaused) {
+  if (!DZ.player.isPlaying) {
     DZ.player.play();
-    playerIsPaused = false;
     $("#PlayPauseHoverIcon").removeClass("glyphicon glyphicon-play-circle");
     $("#PlayPauseHoverIcon").addClass("glyphicon glyphicon-pause");
   }
   else {
     DZ.player.pause();
-    playerIsPaused = true;
     $("#PlayPauseHoverIcon").removeClass("glyphicon glyphicon-pause");
     $("#PlayPauseHoverIcon").addClass("glyphicon glyphicon-play-circle");
   }
 }
+*/
 
 // Utility method used in albumPlayer.js vue class.
 function str_pad_left(string,pad,length) {
