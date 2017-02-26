@@ -1,4 +1,4 @@
-# DeezerShuffler (WORK IN PROGRESS)
+# DeezerShuffler
 
 One of my favourite features often missing from music players and services these days is the ability to pick a random album and play the entire thing front to back.
 
