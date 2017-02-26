@@ -7,15 +7,13 @@ $(function() {
 
     DZ.init({
 		    appId  : '225304',
-		    channelUrl : 'http://lvh.me:81',
+		    channelUrl : 'http://lvh.me:81/channel.html',
 		    player: {
     			
 		    }
 	    });
 
-    DZ.Event.subscribe('tracklist_changed', function(args, evt_name) { LoadTrackList();});
-	    
-	   PromiseIsAlreadyLoggedIn().then(function(result) {
+     PromiseIsAlreadyLoggedIn().then(function(result) {
 	      console.log("Checking if you are already logged in = " + result);
 	      if (result === true);
 	        isLoggedInProbably = true;
@@ -32,11 +30,13 @@ $(function() {
             PlayRandomAlbum();
         }
     });
+
+    DZ.Event.subscribe('tracklist_changed', function(args, evt_name) { LoadTrackList();});
 });
 
 function PromiseTryLogin() {
   return new Promise(function(resolve, reject) {
-	    if (isLoggedInProbably === false) {
+      if (isLoggedInProbably === false) {
         DZ.login(function(response) {
           if (response.authResponse) {
             //console.log('Welcome!  Fetching your information.... ');
@@ -50,18 +50,21 @@ function PromiseTryLogin() {
           }
         }, {perms: 'basic_access,email'});
 	    }
-	    resolve("Already logged in...");
+      resolve("Already logged in...");
   });
 }
 
 function PromiseIsAlreadyLoggedIn() {
   return new Promise(function(resolve, reject) {
+    console.log("Executing PromiseIsAlreadyLoggedIn...");
     DZ.getLoginStatus(function(response) {
     	if (response.authResponse) {
-    		resolve(true);
+    		console.log("Returning resolve(true)");
+        resolve(true);
     	} 
     	else {
-    		resolve(false);
+    		console.log("Returning resolve(false)");
+        resolve(false);
     	}
     });
   });
