@@ -11,6 +11,10 @@
   <body>
     <header>
       Deezer Favourite Shuffler
+      <a href="https://github.com/mruston0/DeezerShuffler" target="_blank" class="pull-right">
+        <img src="content/GitHub-Mark-Light-32px.png" style="padding-bottom: 7px; padding-right:5px;">
+      </a>
+      </img>
     </header>
 
     <main>
@@ -26,7 +30,7 @@
             <img v-bind:src="albumArt" id="albumArt">
               <a href="#" @click="togglePlay">
                 <span id="PlayPauseHoverIcon"
-                      v-bind:class="classObject"></span>
+                      v-bind:class="isPlayingClass"></span>
               </a>
             </img>
           </div>          
@@ -52,4 +56,5 @@
     <script src="scripts/client.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </body>
+  <footer><footer>
 </html>

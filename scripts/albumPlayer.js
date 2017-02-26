@@ -8,15 +8,16 @@ var albumPlayer = new Vue({
         isPlaying: false
     },
      computed: {
-         classObject: function() {
+         isPlayingClass: function() {
             if (this.isPlaying) {
-                //console.log('~~~~~~~~ ~~~~~~~~~~~~~ setting pause icon');
                 return 'glyphicon glyphicon-pause';
             }
             else {
-                //console.log('~~~~~~~~ ~~~~~~~~~~~~~ setting play icon');
                 return 'glyphicon glyphicon-play-circle'
             }
+         },
+         isActiveTrack: function() {
+             
          }
      },
     methods: {
@@ -39,7 +40,6 @@ var albumPlayer = new Vue({
              }
         },
         setActiveTrack: function(trackNumber) {
-            //console.log("Setting active track to " + trackNumber);
             /* Could be better, but this works for now */
             for (let trackRow of $("[data-track]"))
             {
@@ -49,7 +49,7 @@ var albumPlayer = new Vue({
                     trackRow.className = "";
             }
         },
-         trackClicked: function(event) {
+        trackClicked: function(event) {
              var requestedTrack = event.currentTarget.dataset.track;
              var currentTrack = DZ.player.getCurrentIndex();
              var hops = requestedTrack - currentTrack;
