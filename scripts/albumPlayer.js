@@ -15,12 +15,16 @@ var albumPlayer = new Vue({
             else {
                 return 'glyphicon glyphicon-play-circle'
             }
-         },
-         isActiveTrack: function() {
-             
          }
      },
     methods: {
+        getActiveTrack: function() {
+            for(track of this.tracks) {
+                if (track.isActive)
+                    return track;
+            }
+            return null;
+        },
         togglePlay: function() {
             if (DZ.player.isPlaying()) {
                 this.isPlaying = false;
@@ -40,14 +44,13 @@ var albumPlayer = new Vue({
              }
         },
         setActiveTrack: function(trackNumber) {
-            /* Could be better, but this works for now */
-            for (let trackRow of $("[data-track]"))
-            {
-                if (trackRow.dataset.track == trackNumber)
-                    trackRow.className = "trackListingSelected";
-                else
-                    trackRow.className = "";
+            for(track of this.tracks) {
+                if (track.index == trackNumber)
+                    track.isActive = true;
+                 else
+                    track.isActive = false;   
             }
+            
         },
         trackClicked: function(event) {
              var requestedTrack = event.currentTarget.dataset.track;

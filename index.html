@@ -38,10 +38,9 @@
         <div>          
           <table class="trackListing">
             <tbody>
-              <tr v-for="(track, index) in tracks" class="trackListingRow" v-bind:data-track="index" @click="trackClicked">
-                <!-- Bind the row with an ID of the track ID number, that way we can reference it -->
-                <td class="pull-left">{{index +1}}. {{track.title}}</td>
-                <td class="pull-right">{{getTrackTimeString(track.duration)}}</td></tr>
+              <tr v-for="track in tracks" class="trackListing" v-bind:class="{trackListingSelected: track.isActive}"  v-bind:data-track="track.index" @click="trackClicked">
+                <td class="pull-left">{{track.index + 1}}. {{track.title}} </td>
+                <td class="pull-right"><span v-bind:class="{'glyphicon glyphicon-equalizer': track.isActive}"/></span> {{getTrackTimeString(track.duration)}}</td></tr>
             </tbody>
           </table>
         </div>

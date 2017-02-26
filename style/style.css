@@ -1,3 +1,9 @@
+html {
+    /* Allows the vertical scroll bar to always be visible so the screen content doesn't
+       move when albums change and add/remove the scroll bar naturally */
+    overflow-y: scroll; 
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #D4D4D4;
