@@ -1,7 +1,7 @@
 var albumPlayer = new Vue({
     el: "#albumPlayer",
     data: {
-        artist: "",
+        artist: "Click to play a random favourite album from your Deezer library",
         album: "",
         albumArt: "",
         tracks: [],
@@ -15,6 +15,17 @@ var albumPlayer = new Vue({
             else {
                 return 'glyphicon glyphicon-play-circle'
             }
+         },
+         title : function () {
+             let value = "";
+             if (this.artist != null && this.artist.length > 0)
+                    value += this.artist;
+             if (this.album != null && this.album.length > 0) {
+                 if (value.length > 0)
+                    value += " - ";
+                value += this.album
+             }
+            return value;
          }
      },
     methods: {
