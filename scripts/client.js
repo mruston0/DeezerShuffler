@@ -6,7 +6,7 @@ let isPlayerInit = false;
 $(function() {
 
     DZ.init({
-		    appId  : '225304',
+		    appId  : '191962',
 		    channelUrl : `${window.location.href}/channel`,
 		    player: {
     			
