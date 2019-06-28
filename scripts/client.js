@@ -7,7 +7,7 @@ $(function() {
 
     DZ.init({
 		    appId  : '225304',
-		    channelUrl : 'http://lvh.me:81/channel.html',
+		    channelUrl : `${window.location.href}/channel`,
 		    player: {
     			
 		    }
