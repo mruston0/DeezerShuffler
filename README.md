@@ -6,4 +6,4 @@ This app uses the Deezer API to do just that. It loads in your list of your favo
 
 This app is also giving me an excuse to learn Vue.js.
 
-Hosted on Gomix at https://deezershuffler.gomix.me/
+⚠ [2020-11-15] No longer functional due to Deezer not returning SameSite information with their cookiese.
